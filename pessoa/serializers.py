@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import PersonCustumer
+from .models import PersonCustomer
 from garagem.models import Garagem, Vehicle
 
 class PersonSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PersonCustumer
+        model = PersonCustomer
         fields = ('id','name',)
 
 class VehicleSerializer(serializers.ModelSerializer):
@@ -14,8 +14,8 @@ class VehicleSerializer(serializers.ModelSerializer):
 
 class PessoaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PersonCustumer
-        fields = ('categoria','name','email','phone')
+        model = PersonCustomer
+        fields = ('name','email','phone')
 
 class PessoaSerializerCar(serializers.ModelSerializer):
     person = PersonSerializer(read_only=True)

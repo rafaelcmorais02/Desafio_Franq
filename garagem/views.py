@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
 from .models import Garagem, Vehicle
-from .serializers import GaragemSerializerGet, GaragemSerializerPost, CarSerializer, MotoSerializer
+from .serializers import GaragemSerializerGet, GaragemSerializerPost, CarSerializer, MotoSerializer, VehicleRegisterSerializer
 
 class GetList(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAdminUser,)
@@ -26,8 +26,13 @@ class GetVehicleDetail(generics.RetrieveAPIView):
             return serializer_class
 
 class GetAtive(generics.ListAPIView):
-    queryset = Garagem.objects.all()
+    queryset = Garagem.objects.exclude(vehicle__isnull = True)
     serializer_class = GaragemSerializerGet
+
+class VehicleRegister(generics.ListCreateAPIView):
+    permission_classes = (permissions.IsAdminUser,)
+    queryset = Vehicle.objects.all()
+    serializer_class = VehicleRegisterSerializer
 
 
     

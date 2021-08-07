@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os.path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9@vn93vb&#iq2)gmb+^ghlnql48g@70i=jakn576#g(7nxh*2e'
+SECRET_KEY = 'django-insecure-)i+9$!ng6mrg@te%l-zg%0g=!q5$a3$t3sbcpr!b(32nhb2st='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,37 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pessoa', #local
-    'garagem', #local
-    'django.contrib.sites', # Local
-    'rest_framework', #external
-    'rest_framework.authtoken', #external
-    'allauth', # External
-    'allauth.account', # External
-    'allauth.socialaccount', # External
-    'dj_rest_auth', #external
-    'dj_rest_auth.registration', # External
-    'corsheaders', # External
-    
+    'rest_framework',
+    'consume',
 ]
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
-SITE_ID = 1 
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-    'rest_framework.permissions.IsAuthenticated',
-],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-    'rest_framework.authentication.SessionAuthentication',
-    'rest_framework.authentication.TokenAuthentication',
-],
-}
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -75,17 +50,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000',
-    'http://localhost:8005',
-)
-
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,6 +68,7 @@ TEMPLATES = [
     },
 ]
 
+# Template directory setting
 WSGI_APPLICATION = 'config.wsgi.application'
 
 

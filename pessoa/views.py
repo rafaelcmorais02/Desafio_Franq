@@ -1,22 +1,21 @@
-from .models import PersonCustumer
+from .models import PersonCustomer
 from rest_framework import generics,permissions
 from .serializers import PessoaSerializer, PessoaSerializerCar
 from garagem.models import Garagem
-from django.db.models import Count
 
 class CreatePerson(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAdminUser,)
-    queryset = PersonCustumer.objects.all()
+    queryset = PersonCustomer.objects.all()
     serializer_class = PessoaSerializer
 
 class ManagePerson(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAdminUser,)
-    queryset = PersonCustumer.objects.all()
+    queryset = PersonCustomer.objects.all()
     serializer_class = PessoaSerializer
 
 class ListClient(generics.ListAPIView):
     permission_classes = (permissions.IsAdminUser,)
-    queryset = PersonCustumer.objects.all()
+    queryset = PersonCustomer.objects.all()
     serializer_class = PessoaSerializer
 
 class ListClientNoCar(generics.ListAPIView):
