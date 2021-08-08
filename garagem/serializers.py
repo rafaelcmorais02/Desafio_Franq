@@ -21,7 +21,7 @@ class GaragemSerializerGet(serializers.ModelSerializer):
     vehicle = VehicleSerializer(read_only=True, many=True)
 
     class Meta:
-        fields = ('email','phone','vehicle')
+        fields = ('id','email','phone','vehicle')
         model = Garagem
 
 class GaragemSerializerPost(serializers.ModelSerializer):

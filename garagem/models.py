@@ -8,7 +8,7 @@ class Vehicle(models.Model):
     name = models.CharField(max_length=100)
     color = models.CharField(max_length=20)
     model = models.CharField(max_length=100)
-    year = models.IntegerField()
+    year = models.PositiveIntegerField()
     CAR = 'C'
     MOTORBIKE = 'M'
     CATEGORY_CHOICES = [
